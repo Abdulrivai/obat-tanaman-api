@@ -17,7 +17,7 @@ PRODUCTS_DATA = [
         "harga": 55000,
         "rating": 4.6,
         "total_penjualan": 980,
-        "gambar": "https://example.com/insektokill_xtra.jpg"
+        "gambar": "https://firebasestorage.googleapis.com/v0/b/bank-sampah-1ef03.appspot.com/o/leafcare%2Fprofilechatbot.png?alt=media&token=81cbad2d-1c5f-46d4-80d7-f5d2e0276822"
     },
     {
         "id": 3,
