@@ -36,5 +36,7 @@ def get_product(product_id):
     return jsonify(product.to_dict())
 
 if __name__ == '__main__':
-    # Untuk development, Railway akan menggunakan gunicorn atau sejenisnya
+    with app.app_context():
+        from database import init_db
+        init_db(app)
     app.run(debug=True, host='0.0.0.0', port=os.getenv('PORT', 5000))
