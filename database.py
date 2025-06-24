@@ -30,22 +30,19 @@ class Product(db.Model):
 
 def init_db(app):
     with app.app_context():
+        db.drop_all()  # Hapus semua tabel
         db.create_all()
-        # Masukkan data awal jika database kosong
-        if not Product.query.first():
-            print("Mengisi database dengan data awal...")
-            for product_data in PRODUCTS_DATA:
-                product = Product(
-                    id=product_data["id"],
-                    nama_produk=product_data["nama_produk"],
-                    petunjuk_penggunaan=product_data["petunjuk_penggunaan"],
-                    harga=product_data["harga"],
-                    rating=product_data["rating"],
-                    total_penjualan=product_data["total_penjualan"],
-                    gambar=product_data["gambar"]
-                )
-                db.session.add(product)
-            db.session.commit()
-            print("Data awal berhasil dimasukkan.")
-        else:
-            print("Database sudah berisi data.")
+        from data import PRODUCTS_DATA
+        for product_data in PRODUCTS_DATA:
+            product = Product(
+                id=product_data["id"],
+                nama_produk=product_data["nama_produk"],
+                petunjuk_penggunaan=product_data["petunjuk_penggunaan"],
+                harga=product_data["harga"],
+                rating=product_data["rating"],
+                total_penjualan=product_data["total_penjualan"],
+                gambar=product_data["gambar"]
+            )
+            db.session.add(product)
+        db.session.commit()
+        print("Database direset dan diisi ulang.")
